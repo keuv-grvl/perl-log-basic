@@ -51,6 +51,11 @@ sub msg {
 	print "[msg] ".now()." - @_\n" if $VERBOSITY > 0;
 }
 
+sub fatal {
+	print "[fatal] ".now()." - @_\n";
+	exit 123;
+}
+
 sub sep {
 	print '-' x 80 . "\r---@_\n";
 }
@@ -83,6 +88,8 @@ Log::Basic displays formatted log messages.
 Log message are formatted as: [<level>] <date> - <message>
 
 Level can be: "debug", "info", "warn", "error", "msg".
+
+"fatal" is a special level, corresponding to perl's die().
 
 Date is formatted as: "YYYY-MM-DD hh:mm:ss".
 

@@ -33,8 +33,10 @@ Verbosity and associated levels are:
 - level 3, "warn"
 - level 4, "info"
 - level 5, "debug"
+- no level, "fatal"
 
 Setting verbosity to 3 will print "warn", "info", and "msg" only.
+"fatal" is a special level, corresponding to perl's die().
 Dates are formatted as: "YYYY-MM-DD hh:mm:ss".
 Your message could be whatever you what.
 
@@ -63,5 +65,4 @@ Copyright (C) 2016 by Kévin Gravouil
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.20.2 or,
 at your option, any later version of Perl 5 you may have available.
-
 
