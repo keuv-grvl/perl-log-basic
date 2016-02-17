@@ -29,16 +29,16 @@ Log::Basic displays formatted log messages accorinding to the defined verbosity 
 Log messages are formatted as: `[<level>] <date> - <message>`
 
 Verbosity and associated levels are:
-- level 1, "msg"
-- level 2, "error"
-- level 3, "warn"
-- level 4, "info"
-- level 5, "debug"
-- no level, "fatal"
+- level 1, `msg`
+- level 2, `error`
+- level 3, `warn`
+- level 4, `info`
+- level 5, `debug`
+- no level, `fatal`
 
-Setting verbosity to 3 will print "warn", "info", and "msg" only.
-"fatal" is a special level, corresponding to perl's die().
-Dates are formatted as: "YYYY-MM-DD hh:mm:ss".
+Setting verbosity to 3 will print `warn`, `info`, and `msg` only.
+`fatal` is a special level, corresponding to perl's `die()`.
+Dates are formatted as: `YYYY-MM-DD hh:mm:ss`.
 Your message could be whatever you what.
 
 Separator is a special functions which display a line of 80 dashes, with your message eventually.
