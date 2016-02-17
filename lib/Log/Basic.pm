@@ -92,34 +92,61 @@ Log::Basic - Perl extension for simple logging.
   error "something terrible happend !";
   msg "this message will be displayed whatever the verbosity level";
   sep "a separator";
+  fatal "fatal error: $!";
 
 =head1 DESCRIPTION
 
-Log::Basic displays formatted log messages.
+Log::Basic displays formatted messages according to the defined verbosity level (default:4).
 
-Log message are formatted as: [<level>] <date> - <message>
+=head2 Format
 
-Level can be: "debug", "info", "warn", "error", "msg".
-
-"fatal" is a special level, corresponding to perl's die().
-
-Date is formatted as: "YYYY-MM-DD hh:mm:ss".
-
+Log messages are formatted as: `[<level>] <date> - <message>`.
+Dates are formatted as: `YYYY-MM-DD hh:mm:ss`.
 Your message could be whatever you what.
 
-Separator will display a line of dash, with your message eventually.
+=head2 Levels
+
+Verbosity and associated levels are:
+
+=over
+
+=item - level 1, `msg`
+
+=item - level 2, `error`
+
+=item - level 3, `warn`
+
+=item - level 4, `info`
+
+=item - level 5, `debug`
+
+=item - no level, `fatal`
+
+=back
+
+Setting verbosity to 3 will print `warn`, `info`, and `msg` only.
+
+=head2 Special cases
+
+`fatal` is a special level, corresponding to perl's `die()`.
+
+Separator is a special functions which display a line of 80 dashes, with your message eventually.
+
+=head2 Saving to file
+
+All messages will also be appended to a file. If a `./log/` folder exists, a `$$.$0.log` file is created within this folder, otherwise the `$$.$0.log` file is created in the current directory.
 
 =head1 EXPORT
 
-debug info warning error msg sep
+debug info warning error msg sep fatal
 
 =head1 AUTHOR
 
-Kévin Gravouil, E<lt>k.gravouil@gmail.comE<gt>
+Kevin Gravouil, E<lt>k.gravouil@gmail.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2016 by Kévin Gravouil
+Copyright (C) 2016 by Kevin Gravouil
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.20.2 or,
