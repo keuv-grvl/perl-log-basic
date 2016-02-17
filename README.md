@@ -6,7 +6,6 @@ Log::Basic
 ##One-liner
 ```
 perl -MLog::Basic -e 'info "Hello"'
-```
 This outputs `[info] 2016-02-17 11:32:51 - Hello`
 
 ##Full Perl example
@@ -19,6 +18,7 @@ warning "wow! beware!";
 error "something terrible happend !";
 msg "this message will be displayed whatever the verbosity level";
 sep "a separator";
+fatal "fatal error: $!";
 ```
 
 #DESCRIPTION
