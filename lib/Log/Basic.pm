@@ -25,7 +25,7 @@ our $VERBOSITY = $DEFAULT_VERBOSITY;
 # ------------------------------------------------------------------------------
 sub now {
 	my ($S,$M,$H,$d,$m,$y) = localtime(time);
-	return sprintf("%04d-%02d-%02d %02d:%02d:%02d", $y+1900, $m+1 ,$d,$H,$M,$S);
+	return sprintf("[%04d-%02d-%02d %02d:%02d:%02d]", $y+1900, $m+1 ,$d,$H,$M,$S);
 }
 
 # ------------------------------------------------------------------------------
@@ -42,37 +42,37 @@ open(OUT, ">>", "./log/$outfile")
 # Exported functions
 # ------------------------------------------------------------------------------
 sub debug {
-	print "[debug] ".now()." - @_\n" if $VERBOSITY > 4;
-	print OUT "[debug] ".now()." - @_\n" if(fileno(OUT));
+	print "[debug] [proc:$$] ".now()." @_\n" if $VERBOSITY > 4;
+	print OUT "[debug] [proc:$$] ".now()." @_\n" if(fileno(OUT));
 }
 
 sub info {
-	print "[info] ".now()." - @_\n" if $VERBOSITY > 3;
-	print OUT "[info] ".now()." - @_\n" if(fileno(OUT));
+	print "[info]  [proc:$$] ".now()." @_\n" if $VERBOSITY > 3;
+	print OUT "[info]  [proc:$$] ".now()." @_\n" if(fileno(OUT));
 }
 
 sub warning {
-	print "[warn] ".now()." - @_\n" if $VERBOSITY > 2;
-	print OUT "[warn] ".now()." - @_\n" if(fileno(OUT));
+	print "[warn]  [proc:$$] ".now()." @_\n" if $VERBOSITY > 2;
+	print OUT "[warn]  [proc:$$] ".now()." @_\n" if(fileno(OUT));
 }
 
 sub error {
-	print "[error] ".now()." - @_\n" if $VERBOSITY > 1;
-	print OUT "[error] ".now()." - @_\n" if(fileno(OUT));
+	print "[error] [proc:$$] ".now()." @_\n" if $VERBOSITY > 1;
+	print OUT "[error] [proc:$$] ".now()." @_\n" if(fileno(OUT));
 }
 
 sub msg {
-	print "[msg] ".now()." - @_\n" if $VERBOSITY > 0;
-	print OUT "[msg] ".now()." - @_\n" if(fileno(OUT));
+	print "[msg]   [proc:$$] ".now()." @_\n" if $VERBOSITY > 0;
+	print OUT "[msg]   [proc:$$] ".now()." @_\n" if(fileno(OUT));
 }
 
 sub fatal {
-	print OUT "[fatal] ".now()." - @_\n" if(fileno(OUT));
-	die "[fatal] ".now()." - @_\n";
+	print OUT "[fatal] [proc:$$] ".now()." @_\n" if(fileno(OUT));
+	die "[fatal] [proc:$$] ".now()." @_\n";
 }
 
 sub sep {
-	my $str = join(';', @_);
+	my $str = join(' ', "[proc:$$]", @_);
 	print '---', $str, '-' x (80 - (3 + length $str)), "\n";
 	print OUT '---', $str, '-' x (80 - (3 + length $str)), "\n";
 }

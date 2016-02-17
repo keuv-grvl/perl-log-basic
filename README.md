@@ -7,7 +7,7 @@ Log::Basic
 ```
 perl -MLog::Basic -e 'info "Hello"'
 ```
-This outputs `[info] 2016-02-17 11:32:51 - Hello`
+This outputs `[info]  [proc:21699] [2016-02-17 18:20:43] Hello`
 
 ##Full Perl example
 ```perl
@@ -27,7 +27,7 @@ fatal "fatal error: $!";
 Log::Basic displays formatted messages according to the defined verbosity level (default:4).
 
 ##Format
-Log messages are formatted as: `[<level>] <date> - <message>`
+Log messages are formatted as: `[<level>] [<pid>] [<date>] <message>`
 Dates are formatted as: `YYYY-MM-DD hh:mm:ss`.
 Your message could be whatever you what.
 
@@ -48,7 +48,8 @@ Setting verbosity to 3 will print `warn`, `info`, and `msg` only.
 Separator is a special functions which display a line of 80 dashes, with your message eventually.
 
 ##Saving to file
-All messages will also be appended to a file. If a `./log/` folder exists, a `$$.$0.log` file is created within this folder, otherwise the `$$.$0.log` file is created in the current directory.
+All messages will also be appended to a file named `<date>.$$.log`. If a `./log/` folder exists, the file is created in this folder, otherwise it is created in the current directory.
+<date> is formatted as YYYYMMDDhhmmss to allow chronological sorting.
 
 #INSTALLATION
 
@@ -58,6 +59,7 @@ To install this module type the following:
 perl Makefile.PL
 make
 make install
+make clean
 ```
 
 #DEPENDENCIES
