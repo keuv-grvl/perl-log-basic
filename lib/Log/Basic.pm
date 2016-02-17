@@ -25,7 +25,7 @@ our $VERBOSITY = $DEFAULT_VERBOSITY;
 # ------------------------------------------------------------------------------
 sub now {
 	my ($S,$M,$H,$d,$m,$y) = localtime(time);
-	return sprintf("[%04d-%02d-%02d %02d:%02d:%02d]", $y+1900, $m+1 ,$d,$H,$M,$S);
+	return sprintf("%04d-%02d-%02d %02d:%02d:%02d", $y+1900, $m+1 ,$d,$H,$M,$S);
 }
 
 # ------------------------------------------------------------------------------
@@ -42,33 +42,33 @@ open(OUT, ">>", "./log/$outfile")
 # Exported functions
 # ------------------------------------------------------------------------------
 sub debug {
-	print "[debug] [proc:$$] ".now()." @_\n" if $VERBOSITY > 4;
-	print OUT "[debug] [proc:$$] ".now()." @_\n" if(fileno(OUT));
+	print "[debug] [proc:$$] [".now()."] @_\n" if $VERBOSITY > 4;
+	print OUT "[debug] [proc:$$] [".now()."] @_\n" if(fileno(OUT));
 }
 
 sub info {
-	print "[info]  [proc:$$] ".now()." @_\n" if $VERBOSITY > 3;
-	print OUT "[info]  [proc:$$] ".now()." @_\n" if(fileno(OUT));
+	print "[info]  [proc:$$] [".now()."] @_\n" if $VERBOSITY > 3;
+	print OUT "[info]  [proc:$$] [".now()."] @_\n" if(fileno(OUT));
 }
 
 sub warning {
-	print "[warn]  [proc:$$] ".now()." @_\n" if $VERBOSITY > 2;
-	print OUT "[warn]  [proc:$$] ".now()." @_\n" if(fileno(OUT));
+	print "[warn]  [proc:$$] [".now()."] @_\n" if $VERBOSITY > 2;
+	print OUT "[warn]  [proc:$$] [".now()."] @_\n" if(fileno(OUT));
 }
 
 sub error {
-	print "[error] [proc:$$] ".now()." @_\n" if $VERBOSITY > 1;
-	print OUT "[error] [proc:$$] ".now()." @_\n" if(fileno(OUT));
+	print "[error] [proc:$$] [".now()."] @_\n" if $VERBOSITY > 1;
+	print OUT "[error] [proc:$$] [".now()."] @_\n" if(fileno(OUT));
 }
 
 sub msg {
-	print "[msg]   [proc:$$] ".now()." @_\n" if $VERBOSITY > 0;
-	print OUT "[msg]   [proc:$$] ".now()." @_\n" if(fileno(OUT));
+	print "[msg]   [proc:$$] [".now()."] @_\n" if $VERBOSITY > 0;
+	print OUT "[msg]   [proc:$$] [".now()."] @_\n" if(fileno(OUT));
 }
 
 sub fatal {
-	print OUT "[fatal] [proc:$$] ".now()." @_\n" if(fileno(OUT));
-	die "[fatal] [proc:$$] ".now()." @_\n";
+	print OUT "[fatal] [proc:$$] [".now()."] @_\n" if(fileno(OUT));
+	die "[fatal] [proc:$$] [".now()."] @_\n";
 }
 
 sub sep {
