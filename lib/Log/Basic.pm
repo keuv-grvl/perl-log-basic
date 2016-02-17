@@ -9,16 +9,19 @@ require Exporter;
 our @ISA = qw(Exporter);
 
 our @EXPORT = qw(
-	debug info warning error msg sep
+	debug info warning error msg sep fatal
 );
 
-our $VERSION = '1.0';
+our $VERSION = '1.1';
 
 # ------------------------------------------------------------------------------
 # Variables
 # ------------------------------------------------------------------------------
 our $DEFAULT_VERBOSITY = 4;
 our $VERBOSITY = $DEFAULT_VERBOSITY;
+open(OUT, ">>", "./log/$$.$0.log")
+	or open(OUT, ">>", "$$.$0.log")
+	or die("Could not open $0.$$.log: $!");
 
 # ------------------------------------------------------------------------------
 # Internal functions
@@ -33,33 +36,43 @@ sub now {
 # ------------------------------------------------------------------------------
 sub debug {
 	print "[debug] ".now()." - @_\n" if $VERBOSITY > 4;
+	print OUT "[debug] ".now()." - @_\n" if(fileno(OUT));
 }
 
 sub info {
 	print "[info] ".now()." - @_\n" if $VERBOSITY > 3;
+	print OUT "[info] ".now()." - @_\n" if(fileno(OUT));
 }
 
 sub warning {
 	print "[warn] ".now()." - @_\n" if $VERBOSITY > 2;
+	print OUT "[warn] ".now()." - @_\n" if(fileno(OUT));
 }
 
 sub error {
 	print "[error] ".now()." - @_\n" if $VERBOSITY > 1;
+	print OUT "[error] ".now()." - @_\n" if(fileno(OUT));
 }
 
 sub msg {
 	print "[msg] ".now()." - @_\n" if $VERBOSITY > 0;
+	print OUT "[msg] ".now()." - @_\n" if(fileno(OUT));
 }
 
 sub fatal {
+	print OUT "[fatal] ".now()." - @_\n" if(fileno(OUT));
 	die "[fatal] ".now()." - @_\n";
 }
 
 sub sep {
-	print '-' x 80 . "\r---@_\n";
+	my $str = join(';', @_);
+	print '---', $str, '-' x (80 - (3 + length $str)), "\n";
+	print OUT '---', $str, '-' x (80 - (3 + length $str)), "\n";
 }
 
-
+END {
+	close OUT if(fileno(OUT));
+}
 1;
 __END__
 
