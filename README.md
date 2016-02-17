@@ -6,6 +6,7 @@ Log::Basic
 ##One-liner
 ```
 perl -MLog::Basic -e 'info "Hello"'
+```
 This outputs `[info] 2016-02-17 11:32:51 - Hello`
 
 ##Full Perl example
