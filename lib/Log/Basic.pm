@@ -52,8 +52,7 @@ sub msg {
 }
 
 sub fatal {
-	print "[fatal] ".now()." - @_\n";
-	exit 123;
+	die "[fatal] ".now()." - @_\n";
 }
 
 sub sep {
