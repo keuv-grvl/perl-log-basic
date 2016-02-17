@@ -19,9 +19,6 @@ our $VERSION = '1.1';
 # ------------------------------------------------------------------------------
 our $DEFAULT_VERBOSITY = 4;
 our $VERBOSITY = $DEFAULT_VERBOSITY;
-open(OUT, ">>", "./log/$$.$0.log")
-	or open(OUT, ">>", "$$.$0.log")
-	or die("Could not open $0.$$.log: $!");
 
 # ------------------------------------------------------------------------------
 # Internal functions
@@ -30,6 +27,16 @@ sub now {
 	my ($S,$M,$H,$d,$m,$y) = localtime(time);
 	return sprintf("%04d-%02d-%02d %02d:%02d:%02d", $y+1900, $m+1 ,$d,$H,$M,$S);
 }
+
+# ------------------------------------------------------------------------------
+# File handle
+# ------------------------------------------------------------------------------
+my $n=now(); $n=~s/[- :]//g;
+my $outfile = "$n-$$.log";
+
+open(OUT, ">>", "./log/$outfile")
+	or open(OUT, ">>", "$outfile")
+	or die("Could not open '$outfile': $!");
 
 # ------------------------------------------------------------------------------
 # Exported functions
