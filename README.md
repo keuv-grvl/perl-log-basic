@@ -1,6 +1,20 @@
 Log::Basic
 ==========
 
+- [SYNOPSIS](#synopsis)
+	- [One-liner](#one-liner)
+	- [Full Perl example](#full-perl-example)
+- [DESCRIPTION](#description)
+	- [Format](#format)
+	- [Levels](#levels)
+	- [Special cases](#special-cases)
+	- [Saving to file](#saving-to-file)
+- [INSTALLATION](#installation)
+- [DEPENDENCIES](#dependencies)
+- [ISSUES](#issues)
+- [COPYRIGHT AND LICENCE](#copyright-and-licence)
+
+
 #SYNOPSIS
 
 ##One-liner
