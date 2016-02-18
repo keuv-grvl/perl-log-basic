@@ -27,7 +27,7 @@ fatal "fatal error: $!";
 Log::Basic displays formatted messages according to the defined verbosity level (default:4).
 
 ##Format
-Log messages are formatted as: `[<level>] [<pid>] [<date>] <message>`
+Log messages are formatted as: `[<level>] [<pid>] [<date>] <message>`.
 Dates are formatted as: `YYYY-MM-DD hh:mm:ss`.
 Your message could be whatever you what.
 
@@ -45,21 +45,22 @@ Setting verbosity to 3 will print `warn`, `info`, and `msg` only.
 ##Special cases
 `fatal` is a special level, corresponding to perl's `die()`.
 
-Separator is a special functions which display a line of 80 dashes, with your message eventually.
+`sep` (stands for separator) is a special functions which displays a line of 80 dashes, with your message eventually.
 
 ##Saving to file
 All messages will also be appended to a file named `<date>.$$.log`. If a `./log/` folder exists, the file is created in this folder, otherwise it is created in the current directory.
-<date> is formatted as YYYYMMDDhhmmss to allow chronological sorting.
+<date> is formatted as `YYYYMMDDhhmmss` to allow chronological sorting.
 
 #INSTALLATION
 
-To install this module type the following:
+To install, get the latest [release](https://github.com/keuv-grvl/perl-log-basic/releases) or clone the repo, then type the following:
 
 ```
 perl Makefile.PL
 make
 make install
 make clean
+perl -MLog::Basic -e 'info "done"'
 ```
 
 #DEPENDENCIES
