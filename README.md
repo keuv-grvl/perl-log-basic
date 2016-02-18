@@ -45,7 +45,7 @@ Setting verbosity to 3 will print `warn`, `info`, and `msg` only.
 ##Special cases
 `fatal` is a special level, corresponding to perl's `die()`.
 
-`sep` (stands for separator) is a special functions which displays a line of 80 dashes, with your message eventually.
+`sep` (stands for separator) is a special function which displays a line of 80 dashes, with your message eventually.
 
 ##Saving to file
 All messages will also be appended to a file named `<date>.$$.log`. If a `./log/` folder exists, the file is created in this folder, otherwise it is created in the current directory.
@@ -66,6 +66,10 @@ perl -MLog::Basic -e 'info "done"'
 #DEPENDENCIES
 
 None.
+
+# ISSUES
+
+Please report issues at https://github.com/keuv-grvl/perl-log-basic/issues.
 
 #COPYRIGHT AND LICENCE
 
