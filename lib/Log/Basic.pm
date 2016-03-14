@@ -35,8 +35,8 @@ my $n=now(); $n=~s/[- :]//g;
 my $outfile = "$n-$$.log";
 
 open(OUT, ">>", "./log/$outfile")
-	or open(OUT, ">>", "$outfile")
-	or die("Could not open '$outfile': $!");
+  or open(OUT, ">>", "$outfile")
+  or die("Could not open '$outfile': $!");
 
 # ------------------------------------------------------------------------------
 # Exported functions
