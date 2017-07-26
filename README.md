@@ -15,15 +15,15 @@ Log::Basic
 - [COPYRIGHT AND LICENCE](#copyright-and-licence)
 
 
-#SYNOPSIS
+# SYNOPSIS
 
-##One-liner
+## One-liner
 ```
 perl -MLog::Basic -e 'info "Hello"'
 ```
 This outputs `[info]  [proc:21699] [2016-02-17 18:20:43] Hello`
 
-##Full Perl example
+## Full Perl example
 ```perl
 use Log::Basic;
 $Log::Basic::VERBOSITY=3;
@@ -36,7 +36,7 @@ sep "a separator";
 fatal "fatal error: $!";
 ```
 
-#DESCRIPTION
+# DESCRIPTION
 
 Log::Basic displays formatted messages according to the defined verbosity level (default:4).
 
@@ -45,7 +45,7 @@ Log messages are formatted as: `[<level>] [<pid>] [<date>] <message>`.
 Dates are formatted as: `YYYY-MM-DD hh:mm:ss`.
 Your message could be whatever you what.
 
-##Levels
+## Levels
 Verbosity and associated levels are:
 - level 1, `msg`
 - level 2, `error`
@@ -56,16 +56,16 @@ Verbosity and associated levels are:
 
 Setting verbosity to 3 will print `warn`, `info`, and `msg` only.
 
-##Special cases
+## Special cases
 `fatal` is a special level, corresponding to perl's `die()`.
 
 `sep` (stands for separator) is a special function which displays a line of 80 dashes, with your message eventually.
 
-##Saving to file
+## Saving to file
 All messages will also be appended to a file named `<date>.$$.log`. If a `./log/` folder exists, the file is created in this folder, otherwise it is created in the current directory.
 <date> is formatted as `YYYYMMDDhhmmss` to allow chronological sorting.
 
-#INSTALLATION
+# INSTALLATION
 
 To install, get the latest [release](https://github.com/keuv-grvl/perl-log-basic/releases) or clone the repo, then type the following:
 
@@ -77,7 +77,7 @@ make clean
 perl -MLog::Basic -e 'info "done"'
 ```
 
-#DEPENDENCIES
+# DEPENDENCIES
 
 None.
 
@@ -85,7 +85,7 @@ None.
 
 Please report issues at https://github.com/keuv-grvl/perl-log-basic/issues.
 
-#COPYRIGHT AND LICENCE
+# COPYRIGHT AND LICENCE
 
 Put the correct copyright and licence information here.
 
